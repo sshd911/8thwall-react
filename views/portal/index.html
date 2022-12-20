@@ -1,0 +1,74 @@
+<div id="overlay" style="display: none" class="absolute-fill">
+  <img id="recenterButton" src="./../../assets/textures/recenter.png" alt=""> 
+  <span id="promptText"></span>
+</div>
+
+<a-scene
+  xrextras-gesture-detector
+  responsive-immersive
+  xrextras-runtime-error
+  renderer="colorManagement: true;"
+  xrextras-tap-recenter
+  xrweb>
+  <a-assets>
+    <a-asset-item id="portal-rim-model" src="./../../assets/models/portal.glb"></a-asset-item>
+    <img id="posx" src="./../../assets/textures/cubemap/posx.jpg" alt="">
+    <img id="posy" src="./../../assets/textures/cubemap/posy.jpg" alt="">
+    <img id="posz" src="./../../assets/textures/cubemap/posz.jpg" alt="">
+    <img id="negx" src="./../../assets/textures/cubemap/negx.jpg" alt="">
+    <img id="negy" src="./../../assets/textures/cubemap/negy.jpg" alt="">
+    <img id="negz" src="./../../assets/textures/cubemap/negz.jpg" alt="">
+    <!-- portal bg -->
+    <!-- brazil -->
+    <img id="airport-img" src="./../../assets/portal/airport.jpg" alt="">
+    <img id="station-img" src="./../../assets/portal/station.jpg" alt="">
+    <img id="machupichu-img" src="./../../assets/portal/machupichu.jpg" alt="">
+    <img id="beach-img" src="./../../assets/portal/beach.jpg" alt="">
+    <img id="lencois-img" src="./../../assets/portal/lencois.jpg" alt="">
+    <img id="kirisuto-img" src="./../../assets/portal/kirisuto.jpg" alt="">
+    <img id="art-img" src="./../../assets/portal/art.jpg" alt="">
+    <!-- peru -->
+    <img id="waterfall-img" src="./../../assets/portal/waterfall.jpg" alt="">
+    <img id="waka-img" src="./../../assets/portal/waka.jpg" alt="">
+    <img id="armas-img" src="./../../assets/portal/armas.jpg" alt="">
+    <img id="sun-img" src="./../../assets/portal/sun.jpg" alt="">
+    <img id="temple-img" src="./../../assets/portal/temple.jpg" alt="">
+    <img id="mayoru-img" src="./../../assets/portal/mayoru.jpg" alt="">
+    <img id="moon-img" src="./../../assets/portal/moon.jpg" alt="">
+  </a-assets>
+
+  <a-camera id="camera" position="0 9 10"></a-camera>
+
+  <!-- Hider walls -->
+  <xrextras-opaque-background remove="true">
+    <a-entity id="hider-walls">
+      <!-- outer of portal -->
+      <a-box scale="100 100 1" position="0 50 75" xrextras-hider-material></a-box>
+      <a-box scale="100 1 100" position="0 -1 49" xrextras-hider-material></a-box>
+      <a-box scale="100 1 100" position="0 100 49" xrextras-hider-material></a-box>
+      <a-box scale="1 100 100" position="-30 50 50" xrextras-hider-material></a-box>
+      <a-box scale="1 100 100" position="30 50 50" xrextras-hider-material></a-box>
+      <a-box scale="100 100 0" position="0 0 0" xrextras-hider-material></a-box>
+      <a-ring id="portalHiderRing" radius-inner="0.001" radius-outer="100" position="0 7 0" proximity-trigger="radius: 3.5" xrextras-hider-material></a-ring>
+    </a-entity>
+    <!-- in the portal -->
+    <!-- <a-entity id="portal-wall">-->
+    <!--  <a-circle radius="5.2" rotation="0 180 0" position="0 7.5 0" scale="0.8 0.8 0" xrextras-hider-material></a-circle>-->
+    <!--  <a-circle radius="5.2" rotation="0 180 0" position="0 7.5 0.25" scale="0.8 0.8 0" xrextras-hider-material></a-circle>-->
+    <!--</a-entity>-->
+  </xrextras-opaque-background>
+  <a-entity id="portal-contents">
+     <a-sky src="#airport-img" rotation="0 7 0"></a-sky>
+  </a-entity>
+
+   <a-entity
+    id="portalRim"
+    gltf-model="#portal-rim-model"
+    cubemap-realtime
+    spin="axis: x; speed: 14000"
+    position="0 7 0.66"
+    scale="0.001 0.001 0.001"
+    rotation="0 90 90"
+    shadow="receive: false">
+  </a-entity>
+</a-scene>
